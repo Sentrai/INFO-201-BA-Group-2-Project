@@ -179,7 +179,9 @@ shinyServer(function(input, output) {
     })
     # CONCLUSION
     output$conclusion <- renderText({
-        "Write text here."
+        ## Notable Insight
+        "One notable insight is that most people started using drugs around 20 
+        years old"
     })
     
 })
