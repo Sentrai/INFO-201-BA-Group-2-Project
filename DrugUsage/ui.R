@@ -14,6 +14,13 @@ shinyUI(fluidPage(
 
     # Application title
     navbarPage( "Drug Misuse and Mental Health",
+        tabPanel(
+            "Introduction",
+                mainPanel(
+                   uiOutput("introduction") 
+            )
+        ),
+        
         tabPanel(# Sidebar with a slider input for number of bins
             "Drug Use Prevalance by State",
             sidebarLayout(
@@ -25,13 +32,41 @@ shinyUI(fluidPage(
                 
                 # Show a plot of the generated distribution
                 mainPanel(
-                    plotOutput("distPlot")
+                    plotOutput("distPlot"),
+                    uiOutput("summary1")
                 )
             )
         ),
-        tabPanel("Chart2"),
-        tabPanel("Chart3")
-       
+        tabPanel("Drug Use Rate Over Time by Age Group",
+                 sidebarLayout(
+                     sidebarPanel(
+                         uiOutput("category2"),
+                         uiOutput("agegrp2")
+                     ),
+                     mainPanel(
+                         plotOutput("linePlot"),
+                         uiOutput("summary2")
+                     )
+                 )),
+        tabPanel("Age When First Use of Drug",
+                 sidebarLayout(
+                     sidebarPanel(
+                         uiOutput("substance"),
+                         uiOutput("year2")
+                     ),
+                     
+                     # Show a plot of the generated distribution
+                     mainPanel(
+                         plotOutput("barPlot"),
+                         uiOutput("summary3")
+                     )
+                 )),
+        tabPanel(
+            "Conclusion",
+            mainPanel(
+                uiOutput("conclusion") 
+            )
+        )
     
 
     
