@@ -179,9 +179,21 @@ shinyServer(function(input, output) {
     })
     # CONCLUSION
     output$conclusion <- renderText({
-        ## Notable Insight
-        "One notable insight is that most people started using drugs around 20 
-        years old"
+        "A notable insight discovered in our project was that the average age 
+        when first using for all substances is around 20 years old. The average 
+        age stayed consistent from 2015-2019. The chart the demonstrates the 
+        pattern is the Age When First Use of Drug. When choosing the different 
+        substances and changing the year, you can see how the graph is 
+        positively skewed. The broader implications of the insight show that 
+        most people start to experiment with different kinds of drug at around 
+        the age of 20. This could be due to easier access in college and the 
+        legalization of certain drugs such as marijuana.The quality of the data 
+        is satisfactory as it did not have any gaps and had data for all 48 
+        contiguous states. However, the data was collected by offering a $30 
+        incentive to participants. This makes the results biased towards people 
+        of lower income versus people of higher income that would not care too
+        much about a $30 incentive. An idea to advance this project in the 
+        future would be to compare drug usage in states based on income."
     })
     
 })
