@@ -176,7 +176,10 @@ shinyServer(function(input, output) {
     
     #chart 2 line plot output
     output$linePlot <- renderPlot({
-        ggplot(lineData(), aes(x = year, y = BSAE, color = agegrp)) +
+      group <- switch((strtoi(input$age2) + 1), "12 or older", "12 to 17", "18 to 25",
+                      "26 or older", "18 or older")
+      
+        ggplot(lineData(), aes(x = year, y = BSAE, color = group)) +
             geom_line() +
             geom_point() +
             labs(title = "Drugs BSAE from 1999-2019 for different Age Groups", 
@@ -212,22 +215,82 @@ shinyServer(function(input, output) {
         the demographics whom they serve."
     })
     # CONCLUSION
-    output$conclusion <- renderText({
-        "A notable insight discovered in our project was that the average age 
-        when first using for all substances is around 20 years old. The average 
-        age stayed consistent from 2015-2019. The chart the demonstrates the 
-        pattern is the Age When First Use of Drug. When choosing the different 
-        substances and changing the year, you can see how the graph is 
-        positively skewed. The broader implications of the insight show that 
-        most people start to experiment with different kinds of drug at around 
-        the age of 20. This could be due to easier access in college and the 
-        legalization of certain drugs such as marijuana.The quality of the data 
-        is satisfactory as it did not have any gaps and had data for all 48 
-        contiguous states. However, the data was collected by offering a $30 
-        incentive to participants. This makes the results biased towards people 
-        of lower income versus people of higher income that would not care too
-        much about a $30 incentive. An idea to advance this project in the 
-        future would be to compare drug usage in states based on income."
+    output$notableinsightone <- renderText({
+        "One notable insight discovered in our project was that the average age 
+        when first using for hard subtances such as cocaine, heroin, LSD, and 
+        hallucinogens is around 20 years old. The average 
+        age stayed consistent from 2015-2019. When choosing the different 
+        substances and changing the year you can see how the graphs are
+        positively skewed." })
+    
+    output$graphImage1 <- renderImage({
+        filename <- normalizePath(file.path('cocaineUse.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("Graph_1", input$n))
+    }, deleteFile = FALSE)
+    
+    output$graphImage2 <- renderImage({
+        filename <- normalizePath(file.path('mentalHealth.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("Graph_2", input$n))
+    }, deleteFile = FALSE)
+    
+    output$cocaine <- renderImage({
+        filename <- normalizePath(file.path('cocaine.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("cocaine", input$n))
+    }, deleteFile = FALSE)
+    
+    output$lsd <- renderImage({
+        filename <- normalizePath(file.path('lsd.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("lsd", input$n))
+    }, deleteFile = FALSE)
+    
+    output$heroin <- renderImage({
+        filename <- normalizePath(file.path('heroin.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("Gheroin", input$n))
+    }, deleteFile = FALSE)
+    
+    output$hallucinogin <- renderImage({
+        filename <- normalizePath(file.path('hallucinogin.png'))
+        list(src = filename,
+             width = 600, height = 300,
+             alt = paste("hallucinogin", input$n))
+    }, deleteFile = FALSE)
+        
+    output$notableinsighttwo <- renderText({
+        "The second notable insight discovered in our project 
+        was that cocaine usage and mental health services received for the age 
+        group 18 and older both have a postive trend line from 2010-2019. 
+        While we cannot assume directly that the two are correlated,
+        it is interesting to see how more people are getting 
+        mental health services and that more people are also using cocaine."
     })
+    
+    output$broaderandquality <- renderText({
+        "The broader implications of the insight show that 
+        most people start to experiment with hard drugs is around 
+        the age of 20. This could be due to easier access in college and having 
+        more financial independence. The quality of the data 
+        was not perfect as there were gaps for certain years regarding the Drug
+        Misuse and the Mental Health graph. There were also some years of 
+        data not available for the Drug Use Rate Over Time by Age Group. 
+        The data was also collected by offering a $30 incentive to participants. 
+        This makes the results biased towards people of lower income versus 
+        people of higher income that would not care too much about a 
+        $30 incentive. An idea to advance this project in the 
+        future would be to compare drug usage in states based on income."
+        
+        
+        
+    })
+
     
 })

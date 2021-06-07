@@ -65,7 +65,26 @@ shinyUI(fluidPage(
         tabPanel(
             "Conclusion",
             mainPanel(
-                uiOutput("conclusion") 
+                h3("Notable Insight One"),
+                uiOutput("notableinsightone"),
+                h5("Cocaine"),
+                imageOutput("cocaine"),
+                h5("LSD"),
+                imageOutput("lsd"),
+                h5("Heroin"),
+                imageOutput("heroin"),
+                h5("Hallucinogins"),
+                imageOutput("hallucinogin"),
+                h3("Notable Insight Two"),
+                uiOutput("notableinsighttwo"),
+                h5("Cocaine Use in the Past Year"),
+                imageOutput("graphImage1"),
+                h5("Recieved Mental Health Services"),
+                imageOutput("graphImage2"),
+                h3("Broader Implications and Quality of Data"),
+                uiOutput("broaderandquality")
+                
+            
             )
         )
     
